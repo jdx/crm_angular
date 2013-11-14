@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app>
+  <head>
+    <title>RailsTableEditor</title>
+    <link href="http://rails-table-editor.dev/assets/application.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0/angular.js"></script>
+    <script src="index.js"></script>
+  </head>
+  <body>
+    <nav class='navbar navbar-default'>
+      <div class='container'>
+        <div class='navbar-header'>
+          <a class="navbar-brand" href="/">Customers</a>
+        </div>
+      </div>
+    </nav>
+    <div ng-controller="CustomerCtrl" class='container'>
+      <div class='row'>
+        <div class='col-md-12'>
+          <table class='table'>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="customer in customers | orderBy:'name'" ng-switch="customer.state">
+                <td ng-switch-default>{{customer.name}}</td>
+                <td ng-switch-default>{{customer.phone}}</td>
+                <td ng-switch-default>
+                  <a ng-click="edit(customer)"class="btn btn-default">Edit</a>
+                </td>
+                <td ng-switch-when="editing" colspan="3">
+                  <form ng-submit="update(customer)" class='form-inline'>
+                    <div class="form-group">
+                      <input class='form-control' ng-model="customer.edit.name" />
+                    </div>
+                    <div class="form-group">
+                      <input class='form-control' ng-model="customer.edit.phone" />
+                    </div>
+                    <input type='submit' class='btn btn-primary' value="Save" />
+                  </form>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-6'>
+          <h3>Add customer</h3>
+          <form ng-submit='create()'>
+            <div class="form-group">
+              <label for="customer_name">Name</label><br>
+              <input ng-model="customer.name" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="customer_phone">Phone</label><br>
+              <input ng-model="customer.phone" class="form-control" />
+            </div>
+            <input class="btn btn-primary" type="submit" value="Add Customer" />
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
