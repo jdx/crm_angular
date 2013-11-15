@@ -1,10 +1,13 @@
+var host = "http://crm-rails.herokuapp.com"
+//var host = "http://crm-rails.dev"
+
 function CustomerCtrl($scope, $http) {
-  $http.get("http://rails-table-editor.dev/api/customers.json").success(function(customers) {
+  $http.get(host + "/api/v1/customers.json").success(function(customers) {
     $scope.customers = customers;
   });
 
   $scope.create = function() {
-    $http.post("http://rails-table-editor.dev/api/customers.json", $scope.customer);
+    $http.post(host + "/api/v1/customers.json", $scope.customer);
     $scope.customers.push($scope.customer);
     $scope.customer = null;
   };
@@ -18,7 +21,7 @@ function CustomerCtrl($scope, $http) {
   };
 
   $scope.update = function(customer) {
-    $http.put("http://rails-table-editor.dev/api/customers/" + customer.id + ".json", customer.edit);
+    $http.put(host + "/api/v1/customers/" + customer.id + ".json", customer.edit);
     customer.name = customer.edit.name;
     customer.phone = customer.edit.phone;
     customer.state = 'show';
