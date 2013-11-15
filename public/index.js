@@ -1,8 +1,14 @@
-var host = "http://crm-rails.herokuapp.com"
-//var host = "http://crm-rails.dev"
+var host;
+if(/node/.test(window.location.href)) {
+  var host = "http://crm-node.herokuapp.com"
+  //var host = 'http://localhost:5000';
+} else {
+  var host = "http://crm-rails.herokuapp.com"
+  //var host = "http://crm-rails.dev";
+}
 
 function CustomerCtrl($scope, $http) {
-  $http.get(host + "/api/v1/customers.json").success(function(customers) {
+  $http.get(host + '/api/v1/customers.json').success(function(customers) {
     $scope.customers = customers;
   });
 
