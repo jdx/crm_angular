@@ -9,6 +9,7 @@ There are 4 applications in this series:
 * [CRM Rails-jQuery](http://github.com/dickeyxxx/crm_rails_jquery). A fork of CRM Rails that uses basecamp-style ajax.
 * [CRM Angular](http://github.com/dickeyxxx/crm_angular). An Angular.js app that interfaces to either CRM Rails or CRM node.js.
 * [CRM node.js](http://github.com/dickeyxxx/crm_node). A drop-in replacement for the CRM Rails API written in node.js.
+* [CRM Scala](https://github.com/dickeyxxx/crm_scala).  A drop-in replacement for the CRM Rails API written in Scala with Play.
 
 
 TODO
